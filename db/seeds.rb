@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+projects = [
+    { name: '绥化城管', amount: 899.99, sponsor: '张三' },
+    { name: '鹤岗城管', amount: 899.99, sponsor: '张三' },
+    { name: '伊春城管', amount: 899.99, sponsor: '张三' },
+    { name: '兰西城管', amount: 899.99, sponsor: '李四' }
+  ]
+
+Project.create!(projects)
+  
+  
+  
+  
+  
+  
+

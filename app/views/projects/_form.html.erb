@@ -1,0 +1,17 @@
+<%= form_for(project) do |f| %>
+  <%= f.label :name, "项目名" %>
+  <%= f.text_field :name %> <br />
+  <!--show exception when name is nil -->
+   <% @project.errors.full_messages_for(:name).each do |message| %>
+    <div><%= message %></div>
+    <% end %>
+
+  <%= f.label :sponsor, "发起人" %>
+  <%= f.text_field :sponsor %> <br />
+
+  <%= f.label :amount, "金额" %>
+  <%= f.text_field :amount %> <br />
+
+
+  <%= f.submit %>
+<% end %>
