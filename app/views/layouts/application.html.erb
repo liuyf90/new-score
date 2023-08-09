@@ -12,9 +12,23 @@
   </head>
 
   <body>
-      <div class="container">
+   <div id="banner" >
+      <%= image_tag "logo.jpeg", alt: 'projects & socre' %>
+      <span class="title"><%= @page_title %></span>
+   </div>
+    <div id="columns" >
+      <div id="side">
+        <ul>
+          <li><a href="http://www....">Home</a></li>
+          <li><a href="http://www..../faq">Questions</a></li>
+          <li><a href="http://www..../news">News</a></li>
+          <li><a href="http://www..../contact">Contant</a></li>
+        </ul>
+      </div>
+     <div id="main" class="container">
         <%= notice %>
         <%= yield %>
+      </div>
       </div>
   </body>
 </html>

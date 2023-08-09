@@ -1,6 +1,9 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<h1>项目列表</h1>
+<div class="button-right">
 <%= link_to "新增项目", new_project_path %>
+</div>
+
+
 
 <table class="table">
   <thead>
@@ -12,17 +15,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @projects.each do |project| %>
-    <tr>
-      <td><%= project.name %></td>
-      <td><%= project.sponsor%></td>
-      <td><%= project.amount %></td>
-      <td>
-        <%= link_to "編輯", edit_project_path(project) %>
-
-      </td>
-    </tr>
-    <% end %>
+  <%
+=begin%>
+ <%= render partial: "project", collection: @projects %> 
+<%
+=end%>
+  <%= render @projects %>
   </tbody>
 </table>
+<div class="paginate">
+<%= paginate @projects %>
+<div>
 
