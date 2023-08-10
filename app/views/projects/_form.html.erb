@@ -12,16 +12,25 @@
 <div class="field">
 <%= f.label :sponsor, "发起人" %>
 <%= f.text_field :sponsor %> <br />
+   <% if @project.errors.messages_for(:sponsor).any? %>
+      <% @project.errors.messages_for(:sponsor).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
 
 </div>
 
 <div class="field">
   <%= f.label :amount, "金额" %>
   <%= f.text_field :amount %> <br />
+   <% if @project.errors.messages_for(:amount).any? %>
+      <% @project.errors.messages_for(:amount).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+  
 </div>
 
 
-  <div class="actions">
   <%= f.submit %>
-  </div>
 <% end %>

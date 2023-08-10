@@ -11,11 +11,18 @@
  * It is generally better to create a new file per style scope.
  *
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
- body, body >p, body >ol, body > ul, body > td {margin: 8px !important}
- #banner {
+body,
+body>p,
+body>ol,
+body>ul,
+body>td {
+    margin: 8px !important
+}
+
+#banner {
     position: relative;
     min-height: 82;
     background: #9c9;
@@ -32,11 +39,13 @@
         min-width: 115px;
         max-height: 82px;
     }
+
     .title {
-       display: block;
-       height: 1em; 
+        display: block;
+        height: 1em;
     }
 }
+
 #columns {
     background: #141;
     display: flex;
@@ -45,75 +54,106 @@
         padding: 1em;
         background: white;
         flex: 1;
-        
+
         form {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            
+            input[name="commit"] {
+                
+                    grid-column: 1 / -1;
+                    margin-top: 1em;
+                    padding: 0.5em 1em;
+                    border-radius: 4px;
+                    background: #141;
+                    color: white;
+                    border: 1px solid #ccc;
+                      /* 将元素向右对齐 */
+                    justify-self: end;
+                }
         }
+
         #error_explanation {
             grid-column: 1 / -1;
             color: red;
         }
+
         .field {
             display: flex;
             flex-direction: column;
             margin: 0.5em 1em;
+
             label {
                 margin-bottom: 0.5em;
             }
-            input, select {
+
+            input,
+            select {
                 padding: 0.5em;
                 border: 1px solid #ccc;
                 border-radius: 4px;
-                
+
             }
 
-            .field_with_errors  {
+            .field_with_errors {
                 margin-top: 0.5em 1em;
                 color: red;
-                input, select {
+
+                input,
+                select {
                     margin: auto;
                     width: 100%;
-                } 
+                }
             }
 
             .message_errors {
                 color: red;
             }
         }
-        .pagination{
+
+        .pagination {
             display: flex;
             justify-content: right;
+
             a {
                 color: black;
             }
         }
+
         .table {
             border-collapse: collapse;
             width: 100%;
+
             thead {
                 background: #141;
                 color: white;
             }
-            th, td {
+
+            th,
+            td {
                 padding: 0.5em;
                 border: 1px solid #ccc;
                 text-align: center;
             }
+
             th {
                 background: #141;
                 color: white;
             }
+
             tr:nth-child(even) {
                 background-color: #f2f2f2;
             }
+
             tr:hover {
                 background-color: #ddd;
             }
         }
+
         .actions {
             grid-column: 1 / -1;
             text-align: center;
+
             button {
                 padding: 0.5em 1em;
                 border-radius: 4px;
@@ -123,9 +163,11 @@
                 cursor: pointer;
             }
         }
+
         .button-right {
             text-align: right;
             margin-bottom: 1em;
+
             a {
                 padding: 0.5em 1em;
                 border-radius: 4px;
@@ -134,18 +176,23 @@
                 border: 1px solid #ccc;
                 cursor: pointer;
             }
-        };
-        
+        }
+
+        ;
+
     }
 
     #side {
         height: auto;
         padding: 1em 2em;
         background: #141;
+        width: 115px;
 
-        form, div{
-             display: inline;
+        form,
+        div {
+            display: inline;
         }
+
         input {
             font-size: small;
         }
@@ -153,16 +200,30 @@
     }
 
 
-        ul {
-            padding: 0;
+    ul {
+        padding: 0;
 
-            li {
-                list-style: none;
-                a{
-                    color: #bfb;
-                    font-size: small;
-                }
+        li {
+            list-style: none;
+
+            a {
+                color: #bfb;
+                font-size: small;
             }
         }
     }
 
+    #notice {
+        color: #000 !important;
+        border: 2px solid red;
+        padding: 1em;
+        margin-bottom: 2em;
+        background: #f0f0f0;
+        font: bold smaller sans-serif;
+        width: max-content;
+
+    }
+    #notice:empty {
+        display: none;
+    }
+}

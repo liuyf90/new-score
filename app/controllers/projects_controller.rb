@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   def index
     @projects = Project.page(params[:page]).per(5)
-    @page_title="项目列表"
   end
 
   def show

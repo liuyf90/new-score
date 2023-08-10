@@ -1,0 +1,37 @@
+<%= form_for(staff) do |f| %>
+<div class="field">
+  <%= f.label :name, "员工名" %>
+  <%= f.text_field :name %> <br />
+  <!--show exception when name is nil -->
+   <% if @staff.errors.messages_for(:name).any? %>
+      <% @staff.errors.messages_for(:name).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+</div>
+<div class="field">
+<%= f.label :mobile, "电话号" %>
+<%= f.text_field :mobile %> <br />
+   <% if @staff.errors.messages_for(:mobile).any? %>
+      <% @staff.errors.messages_for(:mobile).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+
+</div>
+
+<div class="field">
+  <%= f.label :status, "状态" %>
+  <%= f.select :status, Staff.statuses.keys.map { |status| [status.humanize, status] } %>
+
+   <% if @staff.errors.messages_for(:status).any? %>
+      <% @staff.errors.messages_for(:status).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+  
+</div>
+
+
+  <%= f.submit %>
+<% end %>

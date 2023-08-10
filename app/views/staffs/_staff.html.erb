@@ -1,0 +1,9 @@
+    <tr>
+      <td><%= staff.name %></td>
+      <td><%= staff.mobile %></td>
+      <td><%= staff.status.humanize %></td>
+      <td>
+        <%= link_to "編輯", edit_staff_path(staff) %>
+
+      </td>
+    </tr>

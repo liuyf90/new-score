@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  amount: 1.5
-  sponsor: MyString
+  name: 测试项目 
+  amount: 1000.0
+  sponsor: 测试赞助商 
 
 two:
-  name: MyString
-  amount: 1.5
-  sponsor: MyString
+  name: 测试项目2 
+  amount: 2000.0
+  sponsor: 测试赞助商2

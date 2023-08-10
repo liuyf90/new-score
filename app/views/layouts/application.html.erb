@@ -19,14 +19,12 @@
     <div id="columns" >
       <div id="side">
         <ul>
-          <li><a href="http://www....">Home</a></li>
-          <li><a href="http://www..../faq">Questions</a></li>
-          <li><a href="http://www..../news">News</a></li>
-          <li><a href="http://www..../contact">Contant</a></li>
+          <li><%= link_to "项目管理",projects_path   %></li>
+          <li><%= link_to "人员管理",staffs_path   %></li>
         </ul>
       </div>
      <div id="main" class="container">
-        <%= notice %>
+        <p id="notice"><%= notice %></p>
         <%= yield %>
       </div>
       </div>
