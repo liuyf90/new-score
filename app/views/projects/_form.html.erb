@@ -10,10 +10,10 @@
    <% end %>
 </div>
 <div class="field">
-<%= f.label :sponsor, "发起人" %>
-<%= f.text_field :sponsor %> <br />
-   <% if @project.errors.messages_for(:sponsor).any? %>
-      <% @project.errors.messages_for(:sponsor).each do |message| %>
+<%= f.label :staff_id, "发起人" %>
+ <%= f.collection_select :staff_id, Staff.all, :id, :name %>
+   <% if @project.errors.messages_for(:staff_id).any? %>
+      <% @project.errors.messages_for(:staff_id).each do |message| %>
           <div class="message_errors"><%= message %></div>
        <% end %>
    <% end %>

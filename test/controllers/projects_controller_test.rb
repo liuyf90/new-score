@@ -1,12 +1,13 @@
 require "test_helper"
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
+ 
   setup do
     @project = projects(:one)
     @update = {
       name: '绥化城管',
       amount: 899.99,
-      sponsor: '张三'
+      staff_id: staffs(:two).id
     }
   end
   test "should get index" do

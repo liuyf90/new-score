@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_10_033403) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_11_094758) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.float "amount"
-    t.string "sponsor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "staff_id"
+    t.index ["staff_id"], name: "index_projects_on_staff_id"
   end
 
   create_table "staffs", force: :cascade do |t|
@@ -25,6 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_033403) do
     t.string "mobile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
+  add_foreign_key "projects", "staffs"
 end

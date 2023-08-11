@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: 张三 
   status: 1
-  mobile: MyString
+  mobile: 13800138000
 
 two:
-  name: MyString
-  status: 1
-  mobile: MyString
+  name: 李四
+  status: 0
+  mobile: 13800138001

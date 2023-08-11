@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 测试项目 
+  name: 测试项目
   amount: 1000.0
-  sponsor: 测试赞助商 
+  staff: one
 
 two:
   name: 测试项目2 
   amount: 2000.0
-  sponsor: 测试赞助商2
+  staff: one

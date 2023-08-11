@@ -10,6 +10,25 @@
    <% end %>
 </div>
 <div class="field">
+ <%= f.label :password, "Password:" %>
+   <%= f.password_field :password %><br />
+      <% if @staff.errors.messages_for(:password).any? %>
+         <% @staff.errors.messages_for(:password).each do |message| %>
+            <div class="message_errors"><%= message %></div>
+         <% end %>
+      <% end %>
+</div>
+
+<div class="field">
+ <%= f.label :password_confirmation, "Password Confirmation:" %>
+   <%= f.password_field :password_confirmation %><br />
+      <% if @staff.errors.messages_for(:password_confirmation).any? %>
+         <% @staff.errors.messages_for(:password_confirmation).each do |message| %>
+            <div class="message_errors"><%= message %></div>
+         <% end %>
+      <% end %>
+</div>
+<div class="field">
 <%= f.label :mobile, "电话号" %>
 <%= f.text_field :mobile %> <br />
    <% if @staff.errors.messages_for(:mobile).any? %>
