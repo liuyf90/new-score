@@ -10,7 +10,7 @@
 
 
 staffs = [
-    { name: '张三', status: 1, mobile: '18600000000',password_: 'secret' },
+    { name: '张三', status: 1, mobile: '18600000000',password: 'secret' },
     { name: '李四', status: 0, mobile: '18600000000' ,password: 'secret'}
 ]
 Staff.create!(staffs)
