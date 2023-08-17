@@ -5,6 +5,9 @@ class ProjectTest < ActiveSupport::TestCase
   #   assert true
   # end
   #fixtures :staffs, :projects
+  test "test" do
+    assert true
+  end
   test "project attributes is not null" do
     project = Project.new
     assert project.invalid?

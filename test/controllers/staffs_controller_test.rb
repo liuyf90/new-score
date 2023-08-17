@@ -1,6 +1,7 @@
 require "test_helper"
 
 class StaffsControllerTest < ActionDispatch::IntegrationTest
+ include Devise::Test::IntegrationHelpers # Rails >= 5
   setup do
     @staff = staffs(:one)
     @update = {
@@ -14,7 +15,7 @@ class StaffsControllerTest < ActionDispatch::IntegrationTest
   
   #fixtures :staffs, :projects
   test "should get index" do
-    get staffs_index_url
+    get staffs_url
     assert_response :success
   end
   

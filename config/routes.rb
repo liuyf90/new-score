@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get 'staffs/index'
+  root to: 'projects#index'
+  devise_for :users, controllers: { sessions: "users",registrations: "registrations", # 使用自定义的 registrations 控制器 }
+  passwords: 'passwords' }# 使用自定义的密码重置控制器
+
+  
+
   
 
   resources :projects

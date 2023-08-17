@@ -5,5 +5,4 @@ class Staff < ApplicationRecord
     validates :name, uniqueness: true
     validates :mobile, format: { with: /\A1[3-9]\d{9}\Z/,
         message: "only allows phone number" }
-    has_secure_password
 end

@@ -41,7 +41,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   private
   def staff_params
-    params.require(:staff).permit(:name, :status, :mobile, :password, :password_confirmation)
+    params.require(:staff).permit(:name, :status, :mobile)
 
   end
   def record_not_found

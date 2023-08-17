@@ -1,6 +1,7 @@
 require "test_helper"
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers # Rails >= 5
  
   setup do
     @project = projects(:one)
@@ -9,6 +10,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
       amount: 899.99,
       staff_id: staffs(:two).id
     }
+    @user = users(:one)
+    sign_in @user
   end
   test "should get index" do
     get projects_url
