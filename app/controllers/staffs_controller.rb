@@ -1,6 +1,5 @@
 class StaffsController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
   def index
     @staffs = Staff.page(params[:page]).per(5)
   end

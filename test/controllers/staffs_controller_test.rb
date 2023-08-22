@@ -9,6 +9,8 @@ class StaffsControllerTest < ActionDispatch::IntegrationTest
       mobile: 15645101471,
       status: :在用,
     }
+    @user = users(:one)
+    sign_in @user
   end
   
   #fixtures :staffs, :projects
