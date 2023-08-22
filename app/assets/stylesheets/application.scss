@@ -30,7 +30,7 @@ body>td {
     border-bottom: 2px solid;
     font: small-caps 40px/40px "Time New Roman", serif;
     color: #282;
-    text-align: center;
+    text-align: right;
 
     img {
         position: absolute;
@@ -44,6 +44,11 @@ body>td {
         display: block;
         height: 1em;
     }
+
+    .right-option {
+        font-size: 0.5em;
+    }
+    
 }
 
 #columns {

@@ -5,4 +5,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+  setup do
+    @user = users(:one)
+    @staff = staffs(:one)
+  end
 end

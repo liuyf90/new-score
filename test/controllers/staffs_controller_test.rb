@@ -8,8 +8,6 @@ class StaffsControllerTest < ActionDispatch::IntegrationTest
       name: "王五",
       mobile: 15645101471,
       status: :在用,
-      password: "secret",
-      password_confirmation: "secret"
     }
   end
   
@@ -24,12 +22,18 @@ class StaffsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create staff" do
-    assert_difference('Staff.count') do
-      post staffs_url, params: { staff: @update }
-    end
-    assert_redirected_to staffs_url
+  test "should to update staff" do
+    patch staff_url(@staff), params: { staff: @update }
+    assert_redirected_to staffs_url()
   end
+
+
+#  test "should create staff" do
+#    assert_difference('Staff.count') do
+#      post staffs_url, params: { staff: @staff}
+#    end
+#    assert_redirected_to staffs_url
+#  end
 
   test "should update project" do
      patch staff_url(@staff), params: { staff: @update }

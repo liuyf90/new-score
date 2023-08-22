@@ -8,10 +8,23 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
+users = [
+  {
+    email: 'liuyf90@gmail.com',password: '123456'
+  },
+  {
+    email: 'zhangsan@gmail.com',password: '123456'
+  }
+  
+]
+User.create!(users)
+
+
+
 
 staffs = [
-    { name: '张三', status: 1, mobile: '18600000000',password: 'secret' },
-    { name: '李四', status: 0, mobile: '18600000000' ,password: 'secret'}
+    { name: '张三', status: 1, mobile: '18600000000', user: User.first},
+    { name: '李四', status: 0, mobile: '18600000000', user: User.second}
 ]
 Staff.create!(staffs)
   

@@ -10,25 +10,6 @@
    <% end %>
 </div>
 <div class="field">
- <%= f.label :password, "Password:" %>
-   <%= f.password_field :password %><br />
-      <% if @staff.errors.messages_for(:password).any? %>
-         <% @staff.errors.messages_for(:password).each do |message| %>
-            <div class="message_errors"><%= message %></div>
-         <% end %>
-      <% end %>
-</div>
-
-<div class="field">
- <%= f.label :password_confirmation, "Password Confirmation:" %>
-   <%= f.password_field :password_confirmation %><br />
-      <% if @staff.errors.messages_for(:password_confirmation).any? %>
-         <% @staff.errors.messages_for(:password_confirmation).each do |message| %>
-            <div class="message_errors"><%= message %></div>
-         <% end %>
-      <% end %>
-</div>
-<div class="field">
 <%= f.label :mobile, "电话号" %>
 <%= f.text_field :mobile %> <br />
    <% if @staff.errors.messages_for(:mobile).any? %>
@@ -41,13 +22,28 @@
 
 <div class="field">
   <%= f.label :status, "状态" %>
-  <%= f.select :status, Staff.statuses.keys.map { |status| [status.humanize, status] } %>
+  <%
+=begin%>
+ <%= f.select :status, Staff.statuses.keys.map { |key, value| [key.humanize, value] },  selected: staff.status %> 
+<%
+=end%>
+  <%= f.select :status, StaffsHelper::STATUS_MAP.map { |value, label| [label, value] }, selected: @staff.status %>
+
+
 
    <% if @staff.errors.messages_for(:status).any? %>
       <% @staff.errors.messages_for(:status).each do |message| %>
           <div class="message_errors"><%= message %></div>
        <% end %>
    <% end %>
+   <%
+=begin%>
+ <%= debug @staff %> <!-- 输出 @staff 对象的属性 -->
+  <%= debug Staff.statuses.keys %> <!-- 输出 Staff 的状态数组 -->
+  <%= debug staff.status %> <!-- 输出 Staff 的状态数组 -->
+  <%= debug StaffsHelper::STATUS_MAP[staff.status]  %> <!-- 输出 Staff 的状态数组 --> 
+<%
+=end%>
   
 </div>
 

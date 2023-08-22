@@ -1,7 +1,7 @@
     <tr>
       <td><%= staff.name %></td>
       <td><%= staff.mobile %></td>
-      <td><%= staff.status.humanize %></td>
+      <td><%= StaffsHelper::STATUS_MAP[staff.status] %></td>
       <td>
         <%= link_to "編輯", edit_staff_path(staff) %>
 

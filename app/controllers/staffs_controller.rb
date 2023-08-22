@@ -29,7 +29,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def update
     @staff = Staff.find_by(id: params[:id])
-
+    Rails.logger.debug("show the staff's params: #{params.inspect}")
     if @staff.update(staff_params)
       # 成功
       redirect_to staffs_path, notice: "更新成功!"
@@ -41,7 +41,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   private
   def staff_params
-    params.require(:staff).permit(:name, :status, :mobile)
+    params.require(:staff).permit(:name, :status, :mobile, :user_id)
 
   end
   def record_not_found

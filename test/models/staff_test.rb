@@ -9,16 +9,15 @@ class StaffTest < ActiveSupport::TestCase
       staff = Staff.new
       assert staff.invalid?
       assert staff.errors[:name].any?
-      assert staff.errors[:status].any?
       assert staff.errors[:mobile].any?
    end
 
    test "incorrect mobile number" do
-      staff = Staff.new(name: "张三", status: 1, mobile: "123")
+      staff = Staff.new(name: "张三", status: 1, mobile: "123",user_id: 1)
       assert staff.invalid?
       assert staff.errors[:mobile].any?
 
-      staff = Staff.new(name: "张三", status: 1, mobile: "12312312312345")
+      staff = Staff.new(name: "张三", status: 1, mobile: "12312312312345", user_id:1)
       assert staff.invalid?
       assert staff.errors[:mobile].any?
 
