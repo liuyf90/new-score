@@ -1,15 +1,18 @@
 class StaffsController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+load_and_authorize_resource
   def index
     @staffs = Staff.page(params[:page]).per(5)
   end
 
   def show
     @staff = Staff.find_by(id: params[:id])
+    authorize! :read, @user
   end
 
   def new
     @staff = Staff.new
+    authorize! :manage, @user
 
   end
 
@@ -19,6 +22,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def create
     @staff = Staff.new(staff_params)
+    authorize! :manage, @user
     if @staff.save
       redirect_to staffs_url,notice: "新增员工成功!"
     else

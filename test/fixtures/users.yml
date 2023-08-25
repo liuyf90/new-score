@@ -7,11 +7,9 @@
 # test/fixtures/users.yml
 
 one:
-  id: 1
   email: user1@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password123') %>
 
 two:
-  id: 2
   email: user2@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'secret456') %>

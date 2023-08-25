@@ -6,6 +6,8 @@ class UserTest < ActiveSupport::TestCase
   # end
   test "save user with staff" do
     user = User.new(email: "test@124.com ", password: "123456")
+    role = Role.new(name: "admin", description: "管理员")
+    UsersRole.create(user: user, role: Role.first)
 
 
     staff= user.build_staff(name: "张三", status: :在用, mobile: "15645101471")

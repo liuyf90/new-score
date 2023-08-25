@@ -19,9 +19,17 @@ users = [
 ]
 User.create!(users)
 
+roles = [
+  { name: 'admin', description: '管理员' },
+  { name: 'user', description: '普通用户' }
+]
+Role.create!(roles)
 
-
-
+users_roles = [
+  { user: User.first, role: Role.first },
+  { user: User.second, role: Role.second }
+]
+UsersRole.create!(users_roles)
 staffs = [
     { name: '刘宇飞', status: 1, mobile: '18600000000', user: User.first},
     { name: '李四', status: 0, mobile: '18600000000', user: User.second}

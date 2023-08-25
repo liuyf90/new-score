@@ -1,13 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 张三 
-  status: 1
-  mobile: 13800138000
   user: one
+  role: one
 
 two:
-  name: 李四
-  status: 0
-  mobile: 13800138001
-  user: one
+  user: two
+  role: two

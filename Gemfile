@@ -56,6 +56,10 @@ gem 'kaminari'
 
 # authentication
 gem 'devise'
+# authorization
+gem 'cancancan', '~> 3.0'
+
+gem 'font-awesome-sass'
 
 
 group :development, :test do
