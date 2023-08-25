@@ -41,6 +41,17 @@ load_and_authorize_resource
       render :edit,status: :unprocessable_entity
     end
   end
+  
+  def enable
+    staff = Staff.find_by(id: params[:id])
+    staff.update(status: 1)
+    redirect_to staffs_path, notice: "#{staff.name}已启用"
+  end
+  def disable
+    staff = Staff.find_by(id: params[:id])
+    staff.update(status: 0)
+    redirect_to staffs_path, notice: "#{staff.name}已停用"
+  end
 
   private
   def staff_params

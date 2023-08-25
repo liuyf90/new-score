@@ -78,6 +78,26 @@ body>td {
                       /* 将元素向右对齐 */
                     justify-self: end;
                 }
+                .link-container {
+                    display: flex; /* 使用 Flex 布局，让链接在同一行显示 */
+                    align-items: center; /* 垂直居中 */
+                    //justify-content: center;
+    
+                }
+          
+                .custom-link {
+                    display: inline;
+                    background: none;
+                    border: none;
+                    color: #337ab7; /* 设置链接颜色 */
+                    cursor: pointer;
+                    //margin-right: 10px; /* 为了在链接之间添加间距 */
+                    grid-column: 1/-1;
+                    /* 可以根据需要继续添加其他样式 */
+                }
+        }
+         .button_to{
+            display: inline;
         }
 
         #error_explanation {
@@ -155,6 +175,8 @@ body>td {
             tr:hover {
                 background-color: #ddd;
             }
+            
+          
         }
 
         .actions {
@@ -233,4 +255,5 @@ body>td {
     #notice:empty {
         display: none;
     }
+      
 }

@@ -2,8 +2,9 @@
       <td><%= staff.name %></td>
       <td><%= staff.mobile %></td>
       <td><%= StaffsHelper::STATUS_MAP[staff.status] %></td>
-      <td>
-        <%= link_to "編輯", edit_staff_path(staff) %>
-
+      <td class="link-container">
+           <%= link_to "編輯", edit_staff_path(staff), class: "custom-link" %>
+          <%= button_to "启用", enable_staff_path(staff), {method: :patch, form: {data: {turbo: true}}, class: "custom-link"} %>
+          <%= button_to "停用", disable_staff_path(staff), {method: :patch, form: {data: {turbo: true}}, class: "custom-link"} %>
       </td>
     </tr>

@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   
 
   resources :projects
-  resources :staffs
+  resources :staffs do
+    member do
+      patch :enable
+      patch :disable
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
