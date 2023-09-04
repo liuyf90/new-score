@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   
 
   resources :projects
+  resources :tasks
+  resources :types
   resources :staffs do
     member do
       patch :enable

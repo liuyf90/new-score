@@ -1,0 +1,53 @@
+<%= form_for(task) do |f| %>
+<div class="field">
+  <%= f.label :name, "任务名" %>
+  <%= f.text_field :name %> <br />
+  <!--show exception when name is nil -->
+   <% if @task.errors.messages_for(:name).any? %>
+      <% @task.errors.messages_for(:name).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+</div>
+
+<div class="field">
+  <%= f.label :status, "状态" %>
+  <%= f.select :status, TasksHelper::STATUS_MAP.map { |value, label| [label, value] }, selected: @task.status %>
+
+
+
+   <% if @task.errors.messages_for(:status).any? %>
+      <% @task.errors.messages_for(:status).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+  
+</div>
+
+
+<div class="field">
+<%= f.label :user_id, "执行人" %>
+ <%= f.collection_select :user_id, Staff.all, :user_id, :name %>
+   <% if @task.errors.messages_for(:user_id).any? %>
+      <% @task.errors.messages_for(:user_id).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+
+</div>
+
+
+<div class="field">
+<%= f.label :project_id, "项目" %>
+ <%= f.collection_select :project_id, Project.all, :id, :name%>
+   <% if @task.errors.messages_for(:project_id).any? %>
+      <% @task.errors.messages_for(:project_id).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+
+</div>
+
+
+  <%= f.submit %>
+<% end %>

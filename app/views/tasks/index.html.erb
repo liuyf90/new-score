@@ -1,0 +1,25 @@
+<h1>任务列表</h1>
+
+<div class="button-right">
+<%= link_to "新增任务", new_task_path %>
+</div> 
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>任务名</td>
+      <td>状态</td>
+      <td>执行人</td>
+      <td>更新时间</td>
+      <td>操作</td>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @tasks %>
+  </tbody>
+</table>
+<div class="paginate">
+<%= paginate @tasks %>
+<div>
+
+

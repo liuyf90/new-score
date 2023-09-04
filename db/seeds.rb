@@ -6,6 +6,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Task.delete_all
+Project.delete_all
+UsersRole.delete_all
+Staff.delete_all
+Role.delete_all
+User.delete_all
 
 
 users = [
@@ -49,6 +55,12 @@ projects = [
 Project.create!(projects) 
   
   
-  
+tasks = [
+  { name: '设计原型', descript: '绥化城管', status: 1, project: Project.first, user: User.first },
+  { name: '原型建模', descript: '绥化城管', status: 1, project: Project.first, user: User.first },
+  { name: '开发', descript: '绥化城管', status: 1, project: Project.first, user: User.second },
+  { name: '测试', descript: '绥化城管', status: 1, project: Project.first, user: User.second}
+] 
+Task.create!(tasks)
   
 

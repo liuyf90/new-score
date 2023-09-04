@@ -1,0 +1,10 @@
+    <tr>
+      <td><%= task.name %></td>
+      <td><%= TasksHelper::STATUS_MAP[task.status] %></td>
+
+      <td><%= task.user.staff.name if task.user %></td>
+      <td><%= task.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+      <td class="link-container">
+           <%= link_to "編輯", edit_task_path(task), class: "custom-link" %>
+      </td>
+    </tr>

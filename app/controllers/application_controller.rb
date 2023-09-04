@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     rescue_from CanCan::AccessDenied do |exception|
-        redirect_to root_path, alert: "Access denied."
+          flash[:alert] = "你没有访问权限，请联系管理员"
+          redirect_to request.referer || root_path
     end
 
   # 在每个请求前先进行用户认证

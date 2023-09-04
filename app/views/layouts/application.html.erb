@@ -38,8 +38,15 @@
     <div id="columns" >
       <div id="side">
         <ul>
-          <li><%= link_to "项目管理",projects_path   %></li>
+          <% if can?(:read, Project) || can?(:manage, Project) %>
+            <li><%= link_to "项目管理",projects_path   %></li>
+          <% end %>
+          <% if can?(:manage, Staff) %>
           <li><%= link_to "人员管理",staffs_path   %></li>
+          <% end %>
+          <% if can?(:read, Task) || can?(:manage, Task) %>
+          <li><%= link_to "任务管理",tasks_path   %></li>
+          <% end %>
         </ul>
       </div>
      <div id="main" class="container">

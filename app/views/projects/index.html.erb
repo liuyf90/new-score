@@ -1,7 +1,9 @@
 <h1>项目列表</h1>
+<% if can? :manage, @project %>
 <div class="button-right">
 <%= link_to "新增项目", new_project_path %>
 </div>
+<% end %>
 
 
 

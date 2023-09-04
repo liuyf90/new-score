@@ -32,8 +32,9 @@ class Ability
     if user.roles.include?(Role.find_by(name: "admin"))
       can :manage, :all   # 具有管理员角色的用户可以管理所有资源
     elsif user.roles.include?(Role.find_by(name: "user"))
-      can :read, Project     # 具有用户角色的用户可以查看 Post 资源
+      can :read, Project     # 具有用户角色的用户可以查看 Project 资源
       can :update, Staff, user_id: user.id
+      can :read, Task
     end
   end
 end
