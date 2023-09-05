@@ -15,9 +15,12 @@ class TaskTest < ActiveSupport::TestCase
    
     project = Project.first
     user = User.first
+    type = Type.first
     
     task.project = project
     task.user = user
+
+    task.type = type
 
     
     task.save
