@@ -35,9 +35,30 @@ class TasksController < ApplicationController
     end
   end
 
+  #enum status: { 未受理: 0, 已受理: 1, 已完成: 2, 已取消: 3 } 
+ def accept
+    @task = Task.find_by(id: params[:id])
+    @task.status = Task.statuses[:已受理]
+    if @task.save
+      redirect_to tasks_url,notice: "接受任务成功!"
+    else
+      render :new,status: :unprocessable_entity
+    end
+  end
+
+
+  def finish
+    @task = Task.find_by(id: params[:id])
+    @task.status = Task.statuses[:已完成]
+    if @task.save
+      redirect_to tasks_url,notice: "完成任务成功!"
+    else
+      render :new,status: :unprocessable_entity
+    end
+  end
   private
 
   def task_params
-    params.require(:task).permit(:name, :status, :user_id , :project_id)
+    params.require(:task).permit(:name, :status, :user_id , :project_id, :type_id)
   end
 end

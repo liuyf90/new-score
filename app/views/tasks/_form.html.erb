@@ -24,6 +24,16 @@
   
 </div>
 
+<div class="field">
+<%= f.label :type_id, "任务类型" %>
+ <%= f.collection_select :type_id, Type.all, :id, :name %>
+   <% if @task.errors.messages_for(:type_id).any? %>
+      <% @task.errors.messages_for(:type_id).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+
+</div>
 
 <div class="field">
 <%= f.label :user_id, "执行人" %>

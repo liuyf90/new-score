@@ -54,16 +54,6 @@ projects = [
 ]
 
 Project.create!(projects) 
-  
-  
-tasks = [
-  { name: '设计原型', descript: '绥化城管', status: 1, project: Project.first, user: User.first },
-  { name: '原型建模', descript: '绥化城管', status: 1, project: Project.first, user: User.first },
-  { name: '开发', descript: '绥化城管', status: 1, project: Project.first, user: User.second },
-  { name: '测试', descript: '绥化城管', status: 1, project: Project.first, user: User.second}
-] 
-Task.create!(tasks)
-  
 
 types = [
   { name: '设计', point_factor: 1.0 },
@@ -71,4 +61,14 @@ types = [
   { name: '测试', point_factor: 1.5 },
   { name: '运维', point_factor: 1.8 }
 ]
-Type.create!(types)
+Type.create!(types) 
+  
+tasks = [
+  { name: '设计原型', descript: '绥化城管', status: 1, project: Project.first, user: User.first, type: Type.first},
+  { name: '原型建模', descript: '绥化城管', status: 1, project: Project.first, user: User.first, type: Type.second},
+  { name: '开发', descript: '绥化城管', status: 1, project: Project.first, user: User.second, type: Type.third},
+  { name: '测试', descript: '绥化城管', status: 1, project: Project.first, user: User.second, type: Type.fourth}
+] 
+Task.create!(tasks)
+  
+

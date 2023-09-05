@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_084640) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_05_062836) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.float "amount"
@@ -45,7 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_084640) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "type_id", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
+    t.index ["type_id"], name: "index_tasks_on_type_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -80,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_084640) do
   add_foreign_key "projects", "staffs"
   add_foreign_key "staffs", "users"
   add_foreign_key "tasks", "projects"
+  add_foreign_key "tasks", "types"
   add_foreign_key "tasks", "users"
   add_foreign_key "users_roles", "roles"
   add_foreign_key "users_roles", "users"
