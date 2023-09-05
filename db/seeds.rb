@@ -12,6 +12,7 @@ UsersRole.delete_all
 Staff.delete_all
 Role.delete_all
 User.delete_all
+Type.delete_all
 
 
 users = [
@@ -64,3 +65,10 @@ tasks = [
 Task.create!(tasks)
   
 
+types = [
+  { name: '设计', point_factor: 1.0 },
+  { name: '开发', point_factor: 1.2 },
+  { name: '测试', point_factor: 1.5 },
+  { name: '运维', point_factor: 1.8 }
+]
+Type.create!(types)

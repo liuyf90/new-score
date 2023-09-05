@@ -1,0 +1,30 @@
+<%= form_for(type) do |f| %>
+<div class="field">
+  <%= f.label :name, "类型名" %>
+  <%= f.text_field :name %> <br />
+  <!--show exception when name is nil -->
+   <% if @type.errors.messages_for(:name).any? %>
+      <% @type.errors.messages_for(:name).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+</div>
+
+<div class="field">
+  <%= f.label :point_factor, "系数" %>
+  <%= f.text_field :point_factor %> <br />
+
+
+
+   <% if @type.errors.messages_for(:point_factor).any? %>
+      <% @type.errors.messages_for(:point_factor).each do |message| %>
+          <div class="message_errors"><%= message %></div>
+       <% end %>
+   <% end %>
+  
+</div>
+
+
+
+  <%= f.submit %>
+<% end %>

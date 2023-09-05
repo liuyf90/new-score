@@ -47,6 +47,9 @@
           <% if can?(:read, Task) || can?(:manage, Task) %>
           <li><%= link_to "任务管理",tasks_path   %></li>
           <% end %>
+          <% if can?(:manage, Type) %>
+          <li><%= link_to "任务类型",types_path   %></li>
+          <% end %>
         </ul>
       </div>
      <div id="main" class="container">
