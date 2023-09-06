@@ -36,26 +36,23 @@ class TasksController < ApplicationController
   end
 
   #enum status: { 未受理: 0, 已受理: 1, 已完成: 2, 已取消: 3 } 
- def accept
+  def do_next_step
     @task = Task.find_by(id: params[:id])
-    @task.status = Task.statuses[:已受理]
-    if @task.save
-      redirect_to tasks_url,notice: "接受任务成功!"
+    if @task
+      #byebug # 或 binding.pry
+      @task.do_next_step # 尝试更新任务状态
+      if @task.save # 如果保存成功
+        redirect_to tasks_url, notice: "操作成功!"
+      else
+        # 处理保存失败的情况
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new,status: :unprocessable_entity
+      # 处理找不到任务的情况
+      render :not_found, status: :not_found
     end
   end
 
-
-  def finish
-    @task = Task.find_by(id: params[:id])
-    @task.status = Task.statuses[:已完成]
-    if @task.save
-      redirect_to tasks_url,notice: "完成任务成功!"
-    else
-      render :new,status: :unprocessable_entity
-    end
-  end
   private
 
   def task_params

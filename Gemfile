@@ -85,3 +85,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+group :development, :test do
+  gem 'byebug'
+  # 或者使用 pry-rails
+  # gem 'pry-rails'
+end

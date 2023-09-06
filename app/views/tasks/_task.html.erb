@@ -7,8 +7,7 @@
       <td><%= task.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
       <td class="link-container">
            <%= link_to "編輯", edit_task_path(task), class: "custom-link" %>
-           <%= button_to "受理", accept_task_path(task), {method: :patch, form: {data: {turbo: true}}, class: "custom-link"} %>
-           <%= button_to "完成", finish_task_path(task), {method: :patch, form: {data: {turbo: true}}, class: "custom-link"} %>
+           <%= button_to "受理", do_next_step_task_path(task), {method: :patch, form: {data: {turbo: true}}, class: "custom-link"} %>
 
       </td>
     </tr>
