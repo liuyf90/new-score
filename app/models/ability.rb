@@ -34,7 +34,11 @@ class Ability
     elsif user.roles.include?(Role.find_by(name: "user"))
       can :read, Project     # 具有用户角色的用户可以查看 Project 资源
       can :update, Staff, user_id: user.id
-      can :read, Task
+      #can :read, Task
+      # 添加以下权限规则以允许用户执行 Task 的 do_step_next 方法
+      can :update, Task, user_id: user.id
+      can :read, Task     # 具有用户角色的用户可以查看 Task 资源
+      can :do_next_step, Task
     end
   end
 end

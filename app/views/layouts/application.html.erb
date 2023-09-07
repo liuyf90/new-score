@@ -44,7 +44,7 @@
           <% if can?(:manage, Staff) %>
           <li><%= link_to "人员管理",staffs_path   %></li>
           <% end %>
-          <% if can?(:read, Task) || can?(:manage, Task) %>
+          <% if can?(:update, Task) || can?(:manage, Task) %>
           <li><%= link_to "任务管理",tasks_path   %></li>
           <% end %>
           <% if can?(:manage, Type) %>

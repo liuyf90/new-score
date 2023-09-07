@@ -38,8 +38,11 @@ class TasksController < ApplicationController
   #enum status: { 未受理: 0, 已受理: 1, 已完成: 2, 已取消: 3 } 
   def do_next_step
     @task = Task.find_by(id: params[:id])
+    # byebug
+    #authorize! :do_next_step, @task # 检查用户是否具有执行 do_step_next 的权限
     if @task
       #byebug # 或 binding.pry
+      @task.user_id = current_user.id 
       @task.do_next_step # 尝试更新任务状态
       if @task.save # 如果保存成功
         redirect_to tasks_url, notice: "操作成功!"
@@ -52,6 +55,23 @@ class TasksController < ApplicationController
       render :not_found, status: :not_found
     end
   end
+
+   def cancel#Ex:- change_column("admin_users", "email", :string, :limit =>25)
+    @task = Task.find_by(id: params[:id])
+    if @task
+      #byebug # 或 binding.pry
+      @task.cancel # 尝试更新任务状态
+      if @task.save # 如果保存成功
+        redirect_to tasks_url, notice: "操作成功!"
+      else
+        # 处理保存失败的情况
+        render :new, status: :unprocessable_entity
+      end
+    else
+      # 处理找不到任务的情况
+      render :not_found, status: :not_found
+    end
+   end
 
   private
 
