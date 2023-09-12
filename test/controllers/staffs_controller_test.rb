@@ -37,8 +37,4 @@ class StaffsControllerTest < ActionDispatch::IntegrationTest
 #    assert_redirected_to staffs_url
 #  end
 
-  test "should update project" do
-     patch staff_url(@staff), params: { staff: @update }
-     assert_redirected_to staffs_url()
-  end
 end

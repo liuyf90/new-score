@@ -39,6 +39,7 @@ class Ability
       can :update, Task, user_id: user.id
       can :read, Task     # 具有用户角色的用户可以查看 Task 资源
       can :do_next_step, Task
+      can :do_back_step, Task
     end
   end
 end

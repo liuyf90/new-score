@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_05_062836) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_12_021031) do
+  create_table "accounting_books", force: :cascade do |t|
+    t.integer "step"
+    t.string "step_name"
+    t.float "score"
+    t.integer "task_id", null: false
+    t.integer "staff_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["staff_id"], name: "index_accounting_books_on_staff_id"
+    t.index ["task_id"], name: "index_accounting_books_on_task_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.float "amount"
@@ -42,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_062836) do
     t.text "descript"
     t.integer "status"
     t.integer "project_id", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "type_id", null: false
@@ -79,6 +91,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_062836) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "accounting_books", "staffs"
+  add_foreign_key "accounting_books", "tasks"
   add_foreign_key "projects", "staffs"
   add_foreign_key "staffs", "users"
   add_foreign_key "tasks", "projects"

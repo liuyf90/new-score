@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   load_and_authorize_resource
   def index
-    @tasks = Task.page(params[:page]).per(5)
+    @tasks = Task.where(user: current_user).page(params[:page]).per(5)
   end
 
   def edit
@@ -14,38 +14,38 @@ class TasksController < ApplicationController
     Rails.logger.debug("show the task's params: #{params.inspect}")
     if @task.update(task_params)
       # 成功
-      redirect_to tasks_path, notice: "更新成功!"
+      redirect_to tasks_path, notice: '更新成功!'
     else
       # 失敗
-      render :edit,status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def new
     @task = Task.new
-    #authorize! :manage, @task.user # 使用 @task.user 进行权限检查
+    # authorize! :manage, @task.user # 使用 @task.user 进行权限检查
   end
 
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to tasks_url,notice: "新增任务成功!"
+      redirect_to tasks_url, notice: '新增任务成功!'
     else
-      render :new,status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
-  #enum status: { 未受理: 0, 已受理: 1, 已完成: 2, 已取消: 3 } 
+  # enum status: { 未受理: 0, 已受理: 1, 已完成: 2, 已取消: 3 }
   def do_next_step
     @task = Task.find_by(id: params[:id])
     # byebug
-    #authorize! :do_next_step, @task # 检查用户是否具有执行 do_step_next 的权限
+    # authorize! :do_next_step, @task # 检查用户是否具有执行 do_step_next 的权限
     if @task
-      #byebug # 或 binding.pry
-      @task.user_id = current_user.id 
+      # byebug # 或 binding.pry
+      @task.user_id = current_user.id
       @task.do_next_step # 尝试更新任务状态
       if @task.save # 如果保存成功
-        redirect_to tasks_url, notice: "操作成功!"
+        redirect_to tasks_url, notice: '操作成功!'
       else
         # 处理保存失败的情况
         render :new, status: :unprocessable_entity
@@ -56,13 +56,14 @@ class TasksController < ApplicationController
     end
   end
 
-   def cancel#Ex:- change_column("admin_users", "email", :string, :limit =>25)
+  def do_back_step
     @task = Task.find_by(id: params[:id])
     if @task
-      #byebug # 或 binding.pry
-      @task.cancel # 尝试更新任务状态
+      # byebug # 或 binding.pry
+      @task.user_id = current_user.id
+      @task.do_back_step # 尝试更新任务状态
       if @task.save # 如果保存成功
-        redirect_to tasks_url, notice: "操作成功!"
+        redirect_to tasks_url, notice: '操作成功!'
       else
         # 处理保存失败的情况
         render :new, status: :unprocessable_entity
@@ -71,11 +72,28 @@ class TasksController < ApplicationController
       # 处理找不到任务的情况
       render :not_found, status: :not_found
     end
-   end
+  end
+
+  def cancel # Ex:- change_column("admin_users", "email", :string, :limit =>25)
+    @task = Task.find_by(id: params[:id])
+    if @task
+      # byebug # 或 binding.pry
+      @task.cancel # 尝试更新任务状态
+      if @task.save # 如果保存成功
+        redirect_to tasks_url, notice: '操作成功!'
+      else
+        # 处理保存失败的情况
+        render :new, status: :unprocessable_entity
+      end
+    else
+      # 处理找不到任务的情况
+      render :not_found, status: :not_found
+    end
+  end
 
   private
 
   def task_params
-    params.require(:task).permit(:name, :status, :user_id , :project_id, :type_id)
+    params.require(:task).permit(:name, :status, :user_id, :project_id, :type_id)
   end
 end
