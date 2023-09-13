@@ -17,7 +17,7 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test "project amount is number" do
-    project = Project.new(name: "绥化城管",  staff: staffs(:one))
+    project = Project.new(name: "绥化城管",  staff: staffs(:user1_admin_staff))
     project.amount = "abc"
     assert project.invalid?
     assert_equal ["is not a number"],project.errors[:amount] #  project.amount = -1

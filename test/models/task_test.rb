@@ -7,7 +7,6 @@ class TaskTest < ActiveSupport::TestCase
 
     project = Project.first
     user = User.first
-    user.staff = Staff.first
     type = Type.first
 
     @task.project = project

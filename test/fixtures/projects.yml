@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+project1:
   name: 测试项目
   amount: 1000.0
-  staff: one
+  staff: user1_admin_staff 
 
-two:
+project2:
   name: 测试项目2 
   amount: 2000.0
-  staff: one
+  staff: user2_user_staff 

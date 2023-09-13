@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   load_and_authorize_resource
   def index
-    @tasks = Task.where(user: current_user).page(params[:page]).per(5)
+    if can?(:manage, Task)
+      @tasks = Task.page(params[:page]).per(5)
+    else
+      @tasks = Task.where(user: current_user).page(params[:page]).per(5)
+    end
   end
 
   def edit
@@ -39,8 +43,7 @@ class TasksController < ApplicationController
   def do_next_step
     @task = Task.find_by(id: params[:id])
     # byebug
-    # authorize! :do_next_step, @task # 检查用户是否具有执行 do_step_next 的权限
-    if @task
+    if @task && (@task.user_id == current_user.id || can?(:manage, @task) || @task.user_id == nil) # 检查用户是否具有执行 do_step_next 的权限
       # byebug # 或 binding.pry
       @task.user_id = current_user.id
       @task.do_next_step # 尝试更新任务状态
@@ -48,11 +51,11 @@ class TasksController < ApplicationController
         redirect_to tasks_url, notice: '操作成功!'
       else
         # 处理保存失败的情况
-        render :new, status: :unprocessable_entity
+        redirect_to tasks_url, notice: '操作失败!'
       end
     else
       # 处理找不到任务的情况
-      render :not_found, status: :not_found
+       redirect_to tasks_url, notice: '无权操作其他人的任务!'
     end
   end
 

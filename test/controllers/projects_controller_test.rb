@@ -4,13 +4,13 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers # Rails >= 5
  
   setup do
-    @project = projects(:one)
+    @project = projects(:project1)
     @update = {
       name: '绥化城管',
       amount: 899.99,
-      staff_id: staffs(:two).id
+      staff_id: staffs(:user2_user_staff).id
     }
-    @user = users(:one)
+    @user = users(:user1_admin)
     sign_in @user
   end
   test "should get index" do

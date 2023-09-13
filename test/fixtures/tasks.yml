@@ -1,20 +1,20 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+task1_user1_admin:
   name: MyString
   descript: MyText
   status: 0
-  project: one
-  user: one
-  type: one
+  project: project1
+  user: user1_admin
+  type: test 
 
-two:
+task2_user2_user:
   name: MyString
   descript: MyText
   status: 1
-  project: two
-  user: two
-  type: two
+  project: project2
+  user: user2_user
+  type: desgin 
 
   
 

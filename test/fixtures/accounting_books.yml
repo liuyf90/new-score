@@ -4,12 +4,12 @@ one:
   step: 1
   step_name: MyString
   score: 1.5
-  task: one
-  staff: one
+  task: task1_user1_admin 
+  staff: user1_admin_staff 
 
 two:
   step: 1
   step_name: MyString
   score: 1.5
-  task: two
-  staff: two
+  task: task2_user2_user 
+  staff: user2_user_staff 

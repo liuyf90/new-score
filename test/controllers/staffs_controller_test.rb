@@ -3,13 +3,13 @@ require "test_helper"
 class StaffsControllerTest < ActionDispatch::IntegrationTest
  include Devise::Test::IntegrationHelpers # Rails >= 5
   setup do
-    @staff = staffs(:one)
+    @staff = staffs(:user1_admin_staff)
     @update = {
       name: "王五",
       mobile: 15645101471,
       status: :在用,
     }
-    @user = users(:one)
+    @user = users(:user1_admin)
     sign_in @user
   end
   
