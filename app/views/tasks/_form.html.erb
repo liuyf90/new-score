@@ -37,7 +37,7 @@
 
 <div class="field">
 <%= f.label :user_id, "执行人" %>
- <%= f.collection_select :user_id, Staff.all, :user_id, :name %>
+ <%= f.collection_select :user_id, Staff.all, :user_id, :name, include_blank: true %>
    <% if @task.errors.messages_for(:user_id).any? %>
       <% @task.errors.messages_for(:user_id).each do |message| %>
           <div class="message_errors"><%= message %></div>

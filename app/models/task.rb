@@ -16,7 +16,7 @@ class Task < ApplicationRecord
 
   def totle_score
     # byebug
-    AccountingBook.where(task: self, staff: self.user.staff ).sum(:score)
+    AccountingBook.where(task: self, staff: self.user&.staff).sum(:score)
   end
 
   def do_next_step

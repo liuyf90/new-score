@@ -3,7 +3,7 @@
       <td><%= TasksHelper::STATUS_MAP[task.status] %></td>
       <td><%= task.type.name%></td>
 
-      <td><%= task.user.staff.name if task.user %></td>
+      <td><%= task.user.staff.name if task.user and task.user.staff %></td>
       <td><%= task.totle_score %></td>
       <td><%= task.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
       <td class="link-container">
@@ -16,3 +16,4 @@
 
       </td>
     </tr>
+

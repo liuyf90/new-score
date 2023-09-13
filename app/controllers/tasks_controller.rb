@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     if can?(:manage, Task)
       @tasks = Task.page(params[:page]).per(5)
     else
-      @tasks = Task.where(user: current_user).page(params[:page]).per(5)
+      @tasks = Task.where(user: current_user).or(Task.where(user_id: nil)).page(params[:page]).per(5)
     end
   end
 
