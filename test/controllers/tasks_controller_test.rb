@@ -84,4 +84,9 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2*types(:test).point_factor, task.totle_score
   end
 
+  test "cancel task" do
+    patch cancel_task_path(@task)
+    assert_equal -1, @task.reload.status
+  end
+
 end

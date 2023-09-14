@@ -8,7 +8,7 @@
       <td><%= task.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
       <td class="link-container">
            <%= link_to "編輯", edit_task_path(task), class: "custom-link" %>
-           <%= link_to "受理", do_next_step_task_path(task), data: { "turbo-method": :patch, turbo_confirm: 'are you sure?' }, class: "custom-link"%>
+           <%= link_to "下一步", do_next_step_task_path(task), data: { "turbo-method": :patch, turbo_confirm: 'are you sure?' }, class: "custom-link"%>
            <%= link_to "回退", do_back_step_task_path(task), data: { "turbo-method": :patch, turbo_confirm: 'are you sure?' }, class: "custom-link"%>
            <%= link_to "取消", cancel_task_path(task), data: { "turbo-method": :patch, confirm: 'are you sure?' }, class: "custom-link"%>
 
