@@ -15,6 +15,10 @@ Rails.application.routes.draw do
       patch :do_next_step
       patch :do_back_step
       patch :cancel
+      # get :available_list
+    end
+    collection do
+      get :available_list
     end
   end
   resources :types

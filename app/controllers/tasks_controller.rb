@@ -39,6 +39,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def pickup_tasks
+  end
+
+  def available_list
+      @available_tasks = Task.where(user_id: nil).page(params[:page]).per(5)
+  end
   # enum status: { 未受理: 0, 已受理: 1, 已完成: 2, 已取消: 3 }
   def do_next_step
     @task = Task.find_by(id: params[:id])

@@ -40,6 +40,7 @@ class Ability
       can :read, Task     # 具有用户角色的用户可以查看 Task 资源
       can :do_next_step, Task
       can :do_back_step, Task
+      can :available_list, Task
     end
   end
 end

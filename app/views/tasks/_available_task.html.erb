@@ -1,0 +1,9 @@
+    <tr>
+      <td><%= available_task.name %></td>
+      <td><%= TasksHelper::STATUS_MAP[available_task.status] %></td>
+      <td><%= available_task.type.name%></td>
+      <td><%= available_task.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+      <td class="link-container">
+           <%= link_to "受理", do_next_step_task_path(available_task), data: { "turbo-method": :patch, turbo_confirm: 'are you sure?' }, class: "custom-link"%>
+      </td>
+    </tr>
