@@ -62,9 +62,25 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     patch do_next_step_task_url(@task)
     assert_redirected_to tasks_url
     assert_equal "无权操作其他人的任务!", flash[:notice]
-
-        
-    
   end
 
+  test "calculate task score on today" do
+    # 新增一个任务,系数是1.5,当天的任务
+    @admin.staff = Staff.first 
+    task = Task.new(name: '测试任务', descript: '测试任务', status: 0, project: Project.first, user: @admin, type: types(:test))
+    task.save 
+    assert task.valid?
+    patch do_next_step_task_url(task)
+    assert_equal 1*types(:test).point_factor, task.totle_score
+  end
+
+  test "Calculate task score when it has been more than 1 day" do
+    #新增一个昨天的任务
+    @admin.staff = Staff.first 
+    task = Task.new(name: '测试任务', descript: '测试任务', created_at:Date.yesterday,  status: 0, project: Project.first, user: @admin, type: types(:test))
+    task.save
+    assert task.valid?
+    patch do_next_step_task_path(task)
+    assert_equal 2*types(:test).point_factor, task.totle_score
+  end
 end

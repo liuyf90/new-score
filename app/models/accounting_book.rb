@@ -12,7 +12,7 @@ class AccountingBook < ApplicationRecord
 
   private
   def cal_score
-    self.score = self.task.type.point_factor * self.task.days_since_created
+    self.score = self.task.type.point_factor * (self.task.days_since_created+1)
   end
 
 end
