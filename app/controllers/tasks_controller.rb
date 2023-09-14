@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     if can?(:manage, Task)
       @tasks = Task.page(params[:page]).per(5)
     else
-      @tasks = Task.where(user: current_user).or(Task.where(user_id: nil)).page(params[:page]).per(5)
+      @tasks = Task.where(user: current_user).page(params[:page]).per(5)
     end
   end
 
@@ -61,7 +61,7 @@ class TasksController < ApplicationController
       end
     else
       # 处理找不到任务的情况
-       redirect_to tasks_url, notice: '无权操作其他人的任务!'
+       redirect_to tasks_url, alert: '无权操作其他人的任务!'
     end
   end
 

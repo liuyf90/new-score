@@ -61,7 +61,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     # 尝试访问其他用户user1的任务
     patch do_next_step_task_url(@task)
     assert_redirected_to tasks_url
-    assert_equal "无权操作其他人的任务!", flash[:notice]
+    assert_equal "无权操作其他人的任务!", flash[:alert]
   end
 
   test "calculate task score on today" do
@@ -83,4 +83,5 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     patch do_next_step_task_path(task)
     assert_equal 2*types(:test).point_factor, task.totle_score
   end
+
 end

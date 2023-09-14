@@ -68,7 +68,11 @@ tasks = [
   { name: '设计原型', descript: '绥化城管', status: 1, project: Project.first, user: User.first, type: Type.first},
   { name: '原型建模', descript: '绥化城管', status: 1, project: Project.first, user: User.first, type: Type.second},
   { name: '开发', descript: '绥化城管', status: 1, project: Project.first, user: User.second, type: Type.third},
-  { name: '测试', descript: '绥化城管', status: 1, project: Project.first, user: User.second, type: Type.fourth}
+  { name: '测试', descript: '绥化城管', status: 1, project: Project.first, user: User.second, type: Type.fourth},
+  { name: '测试1', descript: '绥化城管', status: 0, project: Project.first,  type: Type.fourth},
+  { name: '测试2', descript: '绥化城管', status: 0, project: Project.first,  type: Type.fourth},
+  { name: '测试3', descript: '绥化城管', status: 0, project: Project.first,  type: Type.fourth},
+  { name: '测试4', descript: '绥化城管', status: 0, project: Project.first,  type: Type.fourth}
 ] 
 Task.create!(tasks)
   
